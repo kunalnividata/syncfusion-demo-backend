@@ -68,10 +68,6 @@ const getSampleData = (req, res) => {
     res.sendFile(path.join(__dirname, './sampleTreegrid.json'));
 }
 
-const modifyJson = (req, res) => {
-    res.sendFile(path.join(__dirname, '/../src/views/index.html'));
-}
-
 const getModifiedData = (sampleData, selectedColumn, dataType, defaultValue) => {
     return sampleData.data.map((item) => {
         const modifiedItem = { ...item };
@@ -138,4 +134,4 @@ const addColumn = (formData, socket) => {
     socket.emit('getUpdatedData', updatedData)
 }
 
-export { generateJsonFile, getSampleData, modifyJson, editColumn, addColumn };
+export { generateJsonFile, getSampleData, editColumn, addColumn };

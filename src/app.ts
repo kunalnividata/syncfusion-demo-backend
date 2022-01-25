@@ -3,7 +3,7 @@ import cors from 'cors';
 import http from 'http';
 import { Server } from 'socket.io';
 
-import { getSampleData, generateJsonFile, modifyJson, editColumn, addColumn } from './getData';
+import { getSampleData, generateJsonFile, editColumn, addColumn } from './getData';
 
 const app = express();
 
@@ -30,8 +30,6 @@ io.on('connection', (socket) => {
 })
 
 app.get('/get-data', getSampleData);
-
-app.get('/modify-json', modifyJson);
 
 server.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
