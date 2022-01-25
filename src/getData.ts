@@ -63,37 +63,6 @@ const generateJsonFile = () => {
     })
 }
 
-const getData = (req, res) => {
-    const sampleData: Array<SampleDataModel> = [];
-    // let parent = -1;
-    // const subRows = 'subRows';
-    // for (let i = 0; i < 50000; i ++) {
-    //     if (i % 5 === 0) {
-    //         parent = i;
-    //     }
-    //     if (i % 5 !== 0) {
-    //         const num: number = isNaN((sampleData.length % parent)- 1) ?  0 : (sampleData.length % parent) - 1;
-    //         sampleData[num][subRows].push({
-    //             name: names[Math.floor(Math.random() * names.length)],
-    //             age: getRandomDataBetween(20, 40),
-    //             id: i + 1,
-    //             exField1: getRandomData(200),
-    //             exField2: getRandomData(100)
-    //         })
-    //     } else {
-    //         sampleData.push({
-    //             name: names[Math.floor(Math.random() * names.length)],
-    //             age: getRandomDataBetween(20, 40),
-    //             id: i + 1,
-    //             exField1: getRandomData(200),
-    //             exField2: getRandomData(100),
-    //             [subRows]: []
-    //         });    
-    //     }                          
-    // }
-    res.json(sampleData);
-}
-
 const getSampleData = (req, res) => {
     res.header("Content-Type", 'application/json');
     res.sendFile(path.join(__dirname, './sampleTreegrid.json'));
@@ -169,4 +138,4 @@ const addColumn = (formData, socket) => {
     socket.emit('getUpdatedData', updatedData)
 }
 
-export { generateJsonFile, getData, getSampleData, modifyJson, editColumn, addColumn };
+export { generateJsonFile, getSampleData, modifyJson, editColumn, addColumn };

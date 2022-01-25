@@ -3,7 +3,7 @@ import cors from 'cors';
 import http from 'http';
 import { Server } from 'socket.io';
 
-import { getData, getSampleData, generateJsonFile, modifyJson, editColumn, addColumn } from './getData';
+import { getSampleData, generateJsonFile, modifyJson, editColumn, addColumn } from './getData';
 
 const app = express();
 
@@ -23,17 +23,9 @@ const port = 3000;
 generateJsonFile();
 
 io.on('connection', (socket) => {
-  console.log('user connected');
-  let previousId;
-
-  const safeJoin = currentId => {
-    socket.leave(previousId);
-    socket.join(currentId);
-    previousId = currentId;
-  };
 
   socket.on('editCol', (formData) => editColumn(formData, socket));
-  
+
   socket.on('addNewCol', (formData) => addColumn(formData, socket));
 })
 
