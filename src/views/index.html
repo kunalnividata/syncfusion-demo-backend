@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <!-- when using the mode "code", it's important to specify charset utf-8 -->
+        <meta charset="utf-8">
+        <!-- <link href="jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+        <script src="jsoneditor/dist/jsoneditor.min.js"></script> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.6.0/jsoneditor.min.css" integrity="sha512-nnOk6g+Ad1MdoerOautiVacB6N+rKYkPO0YGCSq/Mgrb45RXtPC7xEK+R+lyWA1GRBbnLBc71npsBTrF5rBEpw==" crossorigin="anonymous" referrerpolicy="no-referrer" />        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.6.0/jsoneditor.min.js" integrity="sha512-sv04alcG3nnvHa8PlosHYGYqSwkN1Pppj1oqeZjBjZRnJQC+Cj1VmA8bDyMfSV8pGE2M9wYmvBXKx8nQlNxTPw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <body>
+        <div id="jsoneditor" style="width: 400px; height: 400px;"></div>
+        <script type="module">          
+            const container = document.getElementById("jsoneditor")
+            const options = {
+                mode: 'text'
+            }
+            const editor = new JSONEditor(container, options)
+            
+            fetch('/get-data').then(res => res.json()).then((res) => {
+                editor.set(res);
+            });
+        </script>
+    </body>
+</html>
